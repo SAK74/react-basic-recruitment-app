@@ -31,7 +31,7 @@ export const customOverridesLight: MsfpThemeOptions = {
     },
   },
   typography: {
-    fontFamily: ["Roboto","Helvetica","Arial",'sans-serif'].join(',')
+    fontFamily: ["Roboto", "Helvetica", "Arial", 'sans-serif'].join(',')
   }
 };
 
@@ -56,7 +56,7 @@ export const customOverridesDark: MsfpThemeOptions = {
     },
   },
   typography: {
-    fontFamily: ["Roboto","Helvetica","Arial",'sans-serif'].join(',')
+    fontFamily: ["Roboto", "Helvetica", "Arial", 'sans-serif'].join(',')
   }
 };
 
