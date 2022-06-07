@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import './App.css'
-import { Grid, PaletteMode, styled, ThemeProvider } from "@mui/material";
+import { Grid, PaletteMode, ThemeProvider, Toolbar } from "@mui/material";
 import { TopBar } from "./components/TopBar/TopBar";
 import { LeftNavigation } from "./components/LeftNavigation/LeftNavigation";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -19,12 +19,11 @@ function App() {
     }
   };
 
-  const Ofset = styled('div')(({ theme }) => theme.mixins.toolbar)
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <TopBar />
-        <Ofset />
+        <Toolbar />
         <Grid container>
           <Grid item sx={{ width: 200 }}>
             <LeftNavigation />

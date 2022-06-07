@@ -11,8 +11,8 @@ type NavigationItemProp = {
 
 export const NavigationItem: FC<NavigationItemProp> = ({ to, icon, label }) => {
   return (
-    <Link to={to}>
-      <ListItemButton>
+    <Link to={to} >
+      <ListItemButton  >
         <ListItemIcon>{icon}</ListItemIcon>
         <ListItemText>{label}</ListItemText>
       </ListItemButton>

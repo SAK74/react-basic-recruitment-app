@@ -15,5 +15,5 @@ export const navigationRoutes: NavigationRoutes = {
   sports: {
     path: "/sports",
     element: <SportsScreen />,
-  },
+  }
 };

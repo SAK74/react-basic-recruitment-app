@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Paper, Stack, useTheme } from "@mui/material";
+import { Paper, Stack, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 
 type DashboardCardProps = {
@@ -17,22 +17,24 @@ export const DashboardCard: FC<DashboardCardProps> = ({
   const theme = useTheme();
 
   return (
-    <Paper elevation={4}>
-      <Stack>
-        <div>
-          <p>{title}</p>
-        </div>
-        <div style={{ padding: theme.spacing(1, 2) }}>
-          <p>{text}</p>
-        </div>
-        <Stack
-          style={{ padding: theme.spacing(1, 2) }}
-          direction={"row"}
-          justifyContent={"flex-end"}
-        >
-          <Link to={linkTo}>More</Link>
-        </Stack>
+    <Paper elevation={4} sx={{ height: 1 / 1, display: "flex", flexDirection: "column", position: "relative" }}>
+      {/* <Stack sx={{ height: 1 / 1 }}> */}
+      <div>
+        <p>{title}</p>
+      </div>
+      <div style={{ padding: theme.spacing(1, 2) }}>
+        <p>{text}</p>
+        {/* <Typography noWrap>{text}</Typography> */}
+      </div>
+      <Stack
+        style={{ padding: theme.spacing(1, 2), position: "absolute", bottom: "5px", right: "5px" }}
+        direction={"row"}
+        justifyContent={"flex-end"}
+        color={theme.palette.primary.main}
+      >
+        <Link to={linkTo}>More</Link>
       </Stack>
+      {/* </Stack> */}
     </Paper>
   );
 };
