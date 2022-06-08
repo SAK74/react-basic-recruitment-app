@@ -26,7 +26,7 @@ type TableProps<Model extends ModelWithId> = {
   columns: TableColumn<Model>[];
   items: Model[];
   title: string;
-  ButtonProps?: Pick<ButtonProps, "children" | "onClick">;
+  ButtonProps?: Pick<ButtonProps, "children" & "onClick">;
 };
 
 export const Table: FC<TableProps<any>> = ({
@@ -38,15 +38,15 @@ export const Table: FC<TableProps<any>> = ({
   return (
     <Box>
       {/*TODO: style to match designs*/}
-      <Paper sx={{}}>
+      <Paper sx={{ display: "flex", justifyContent: "space-between", px: 2 }}>
         <Typography>{title}</Typography>
         {ButtonProps !== undefined && (
           <Button variant={"contained"} {...ButtonProps} />
         )}
       </Paper>
 
-      <TableContainer>
-        <MuiTable>
+      <TableContainer component={Paper}>
+        <MuiTable size="small">
           <TableHead>
             <MuiTableRow>
               {columns.map((column) => (

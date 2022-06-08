@@ -7,14 +7,11 @@ import { NavigationItem } from "./NavigationItem";
   icons can be found in here: https://mui.com/material-ui/material-icons/
  */
 
-// const Ofset = styled('div')(({ theme }) => theme.mixins.toolbar);
-
 export const LeftNavigation = () => {
   const getPath = (item: string) => navigationRoutes[item]['path'];
-  return <>
 
-    <Drawer variant="permanent" anchor="left">
-      {/* <Ofset /> */}
+  return <>
+    <Drawer variant="permanent" anchor="left" sx={{ [`& .MuiDrawer-paper`]: { width: 200 } }}>
       <Toolbar />
       <List>
         <p>Management</p>
