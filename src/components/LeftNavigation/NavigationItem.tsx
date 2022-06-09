@@ -1,6 +1,6 @@
 import { ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import { SvgIconComponent } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import { Link, useMatch } from "react-router-dom";
 import { FC, ReactElement } from "react";
 
 type NavigationItemProp = {
@@ -10,9 +10,10 @@ type NavigationItemProp = {
 };
 
 export const NavigationItem: FC<NavigationItemProp> = ({ to, icon, label }) => {
+  const matched = Boolean(useMatch(to));
   return (
     <Link to={to} >
-      <ListItemButton  >
+      <ListItemButton selected={matched}>
         <ListItemIcon>{icon}</ListItemIcon>
         <ListItemText>{label}</ListItemText>
       </ListItemButton>

@@ -1,7 +1,8 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useContext } from "react";
 import { TableColumn } from "./Table";
-import { TableCell, TableRow as MuiTableRow } from "@mui/material";
+import { IconButton, TableCell, TableRow as MuiTableRow } from "@mui/material";
 import { ModelWithId } from "../../types/table.types";
+import { SportContext } from "../../screens/Sports";
 
 type TableRowProps<Model> = {
   item: Model;
@@ -12,11 +13,18 @@ export const TableRow = <Model extends ModelWithId>({
   item,
   columns,
 }: TableRowProps<Model>): JSX.Element => {
+  const context = useContext(SportContext);
   const getItemContent = (
     column: TableColumn<Model>
   ): ReactElement | string => {
     if (React.isValidElement(column.value)) {
-      return column.value;
+      if (!context) {
+        throw new Error("Sport Context is lacked...!")
+      }
+      return <IconButton
+        children={column.value}
+        onClick={() => context.getSportDetails(Number(item.id))}
+      />
     }
 
     return item[column.value] as unknown as string;
@@ -25,7 +33,7 @@ export const TableRow = <Model extends ModelWithId>({
   return (
     <MuiTableRow>
       {columns.map((column) => (
-        <TableCell sx={{ textAlign: column.textAlign || "left" }}>
+        <TableCell key={column.id} sx={{ textAlign: column.textAlign || "left" }}>
           {getItemContent(column)}
         </TableCell>
       ))}

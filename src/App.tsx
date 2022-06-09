@@ -22,7 +22,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <TopBar />
+        <TopBar {...{ toggleTheme }} />
         <Toolbar />
         <Grid container>
           <Grid item sx={{ width: 200 }}>
@@ -31,7 +31,7 @@ function App() {
           <Grid item xs>
             <Routes>
               {Object.values(navigationRoutes).map((route) => (
-                <Route key={route.path} path={route.path} element={route.element} />
+                <Route key={route.path} path={route.path} element={route.element ? route.element : <Error404 />} />
               ))}
               <Route path={"*"} element={<Error404 />} />
             </Routes>
