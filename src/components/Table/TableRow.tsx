@@ -3,6 +3,7 @@ import { TableColumn } from "./Table";
 import { IconButton, TableCell, TableRow as MuiTableRow } from "@mui/material";
 import { ModelWithId } from "../../types/table.types";
 import { SportContext } from "../../screens/Sports";
+import { SportType } from "../../types/sports.types";
 
 type TableRowProps<Model> = {
   item: Model;
@@ -21,9 +22,13 @@ export const TableRow = <Model extends ModelWithId>({
       if (!context) {
         throw new Error("Sport Context is lacked...!")
       }
+      const matched = item.id as (SportType['id']) === context.idSportDetails;
       return <IconButton
         children={column.value}
         onClick={() => context.getSportDetails(Number(item.id))}
+        sx={{
+          ['& .MuiSvgIcon-root']: { color: matched ? "primary.main" : "default" }
+        }}
       />
     }
 

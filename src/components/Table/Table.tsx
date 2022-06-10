@@ -10,10 +10,12 @@ import {
   TableHead,
   TableRow as MuiTableRow,
   Typography,
+  useTheme,
 } from "@mui/material";
 import { CSSProperties, FC, ReactElement } from "react";
 import { TableRow } from "./TableRow";
 import { ModelWithId } from "../../types/table.types";
+import { MsfpTheme } from "../../theme";
 
 export type TableColumn<Model> = {
   id: string;
@@ -35,10 +37,18 @@ export const Table: FC<TableProps<any>> = ({
   title,
   ButtonProps,
 }) => {
+  const theme = useTheme<MsfpTheme>();
   return (
     <Box>
       {/*TODO: style to match designs*/}
-      <Paper sx={{ display: "flex", justifyContent: "space-between", px: 2 }}>
+      <Paper sx={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        px: 2,
+        backgroundColor: theme.appBar.main,
+        color: "secondary.contrastText"
+      }}>
         <Typography>{title}</Typography>
         {ButtonProps !== undefined && (
           <Button variant={"contained"} {...ButtonProps} />

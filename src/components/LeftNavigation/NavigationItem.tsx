@@ -11,9 +11,18 @@ type NavigationItemProp = {
 
 export const NavigationItem: FC<NavigationItemProp> = ({ to, icon, label }) => {
   const matched = Boolean(useMatch(to));
+  // console.log(icon);
   return (
     <Link to={to} >
-      <ListItemButton selected={matched}>
+      <ListItemButton selected={matched} sx={{
+        ['& .MuiSvgIcon-root']: {
+          color: matched ? "primary.main" : "default"
+        },
+        ['& .MuiTypography-root']: {
+          fontWeight: matched ? 500 : 400,
+          color: "text.primary"
+        }
+      }}>
         <ListItemIcon>{icon}</ListItemIcon>
         <ListItemText>{label}</ListItemText>
       </ListItemButton>

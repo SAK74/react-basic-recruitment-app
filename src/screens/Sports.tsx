@@ -5,12 +5,14 @@ import { TableColumn } from "../components/Table/Table";
 import { Visibility } from "@mui/icons-material";
 import { getSportById, getSports } from "../service/sports.service";
 import { Table } from '../components/Table/Table';
-import { Box, Grid, Typography } from "@mui/material";
+import { Grid, Typography, Box, useTheme } from "@mui/material";
 import { SportDetailCard } from "../components/Card/SportCard";
 import { InputCard } from "../components/Card/InputCard";
+import { MsfpTheme } from "../theme";
 
 interface SportContextType {
   getSportDetails: (id: SportType['id']) => void;
+  idSportDetails?: SportType['id'];
 }
 export const SportContext = createContext<SportContextType | undefined>(undefined);
 
@@ -43,42 +45,40 @@ export const SportsScreen = () => {
       .then(data => setSports(data));
   }, []);
 
-
-
   if (!sports) {
     return <NoResults />;
   }
 
   // TODO: display data got form service
+  const { palette: { background } } = useTheme<MsfpTheme>();
   return <>
     <Box sx={{
-      backgroundColor: "background.default",
-      pt: 2
+      color: theme => theme.palette.getContrastText(background.default)
     }}>
-      <Typography paragraph>Sports</Typography>
-      <Typography>
+      <Typography paragraph sx={{ fontWeight: 500 }}>Sports</Typography>
+      <Typography paragraph>
         {sports.teaser}
       </Typography>
-      <Grid container>
-        <Grid item xs>
-          <SportContext.Provider value={{ getSportDetails }}>
-            <Table
-              title="Sports"
-              columns={columns}
-              items={sports.items}
-              ButtonProps={{
-                children: "add sport",
-                onClick: () => setAddSport(true)
-              }}
-            />
-          </SportContext.Provider>
-        </Grid>
-        {addSport ? <Grid item xs={4}><InputCard {...{ setAddSport }} /></Grid>
-          : sportDetails !== undefined &&
-          <Grid item xs={6}>
-            <SportDetailCard {...sportDetails} />
-          </Grid>}
-      </Grid>
     </Box>
+    <Grid container spacing={3}>
+      <Grid item xs>
+        <SportContext.Provider value={{ getSportDetails, idSportDetails: sportDetails?.id }}>
+          <Table
+            title="Sports"
+            columns={columns}
+            items={sports.items}
+            ButtonProps={{
+              children: "add sport",
+              onClick: () => setAddSport(true)
+            }}
+          />
+        </SportContext.Provider>
+      </Grid>
+      {addSport ? <Grid item xs={4}><InputCard {...{ setAddSport }} /></Grid>
+        : sportDetails !== undefined &&
+        <Grid item xs={6}>
+          <SportDetailCard {...sportDetails} />
+        </Grid>}
+    </Grid>
   </>
 };

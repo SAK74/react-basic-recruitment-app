@@ -1,4 +1,4 @@
-import { Button, Paper, Stack, TextField } from "@mui/material"
+import { Button, Paper, Stack, styled, TextField, TextFieldProps } from "@mui/material"
 import { ChangeEvent, Dispatch, FC, SetStateAction, useState } from "react"
 
 interface InputState {
@@ -8,19 +8,27 @@ interface InputState {
 interface InputCardProps {
    setAddSport: Dispatch<SetStateAction<boolean>>;
 }
+
+const CustomInput = styled((props: TextFieldProps) => <TextField
+   {...props}
+   size="small"
+/>)({
+   width: 200
+});
+
 export const InputCard: FC<InputCardProps> = ({ setAddSport }) => {
    const [input, setInput] = useState<InputState | undefined>(undefined);
    const handleChange = ({ target: { name, value } }: ChangeEvent<HTMLInputElement>) => {
       setInput(prev => ({ ...prev, [name]: value }));
    }
-   return <Stack component={Paper}>
-      <TextField
+   return <Stack component={Paper} spacing={3} sx={{ p: 2 }}>
+      <CustomInput
          name="name"
          label="Name"
          value={input?.name ? input.name : ""}
          onChange={handleChange}
       />
-      <TextField
+      <CustomInput
          name="location"
          label="Location"
          value={input?.location ? input.location : ""}

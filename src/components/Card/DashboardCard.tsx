@@ -1,6 +1,10 @@
 import { FC } from "react";
-import { Paper, Stack, Typography, useTheme } from "@mui/material";
+import {
+  useTheme, Button,
+  Card, CardHeader, CardContent, CardActions
+} from "@mui/material";
 import { Link } from "react-router-dom";
+import { MsfpTheme } from '../../theme';
 
 type DashboardCardProps = {
   title: string;
@@ -14,27 +18,28 @@ export const DashboardCard: FC<DashboardCardProps> = ({
   text,
   linkTo,
 }) => {
-  const theme = useTheme();
+  const theme = useTheme<MsfpTheme>();
 
   return (
-    <Paper elevation={4} sx={{ height: 1 / 1, display: "flex", flexDirection: "column", position: "relative" }}>
-      {/* <Stack sx={{ height: 1 / 1 }}> */}
-      <div>
-        <p>{title}</p>
-      </div>
-      <div style={{ padding: theme.spacing(1, 2) }}>
-        <p>{text}</p>
-        {/* <Typography noWrap>{text}</Typography> */}
-      </div>
-      <Stack
-        style={{ padding: theme.spacing(1, 2), position: "absolute", bottom: "5px", right: "5px" }}
-        direction={"row"}
-        justifyContent={"flex-end"}
-        color={theme.palette.primary.main}
-      >
-        <Link to={linkTo}>More</Link>
-      </Stack>
-      {/* </Stack> */}
-    </Paper>
+    <Card elevation={4}>
+      <CardHeader
+        title={title}
+        sx={{ backgroundColor: theme.appBar.main, color: "secondary.contrastText", py: 1 }}
+        titleTypographyProps={{
+          variant: "h5"
+        }}
+      />
+      <CardContent>
+        {text}
+      </CardContent>
+      <CardActions sx={{
+        justifyContent: "flex-end",
+        ['& a']: { textDecoration: "none" }
+      }}>
+        <Link to={linkTo}>
+          <Button>more info</Button>
+        </Link>
+      </CardActions>
+    </Card>
   );
 };
