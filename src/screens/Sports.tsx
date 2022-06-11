@@ -45,12 +45,13 @@ export const SportsScreen = () => {
       .then(data => setSports(data));
   }, []);
 
+  const { palette: { background } } = useTheme<MsfpTheme>();
+
   if (!sports) {
     return <NoResults />;
   }
 
   // TODO: display data got form service
-  const { palette: { background } } = useTheme<MsfpTheme>();
   return <>
     <Box sx={{
       color: theme => theme.palette.getContrastText(background.default)

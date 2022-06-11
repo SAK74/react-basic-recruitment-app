@@ -25,11 +25,11 @@ function App() {
         <Box sx={{ backgroundColor: "background.default" }}>
           <TopBar {...{ toggleTheme }} />
           <Toolbar />
-          <Grid container >
+          <Grid container sx={{ pt: 1 }}>
             <Grid item sx={{ width: 200 }}>
               <LeftNavigation />
             </Grid>
-            <Grid item xs sx={{ py: 3, px: 3 }}>
+            <Grid item xs sx={{ p: 2 }}>
               <Routes>
                 {Object.values(navigationRoutes).map((route) => (
                   <Route key={route.path} path={route.path} element={route.element ? route.element : <Error404 />} />

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import {
-  useTheme, Button,
-  Card, CardHeader, CardContent, CardActions
+  useTheme, Button, Card,
+  CardHeader, CardContent, CardActions
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import { MsfpTheme } from '../../theme';
@@ -34,7 +34,7 @@ export const DashboardCard: FC<DashboardCardProps> = ({
       </CardContent>
       <CardActions sx={{
         justifyContent: "flex-end",
-        ['& a']: { textDecoration: "none" }
+        '& a': { textDecoration: "none" }
       }}>
         <Link to={linkTo}>
           <Button>more info</Button>

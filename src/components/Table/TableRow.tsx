@@ -25,9 +25,9 @@ export const TableRow = <Model extends ModelWithId>({
       const matched = item.id as (SportType['id']) === context.idSportDetails;
       return <IconButton
         children={column.value}
-        onClick={() => context.getSportDetails(Number(item.id))}
+        onClick={() => context.getSportDetails((item.id as unknown) as number)}
         sx={{
-          ['& .MuiSvgIcon-root']: { color: matched ? "primary.main" : "default" }
+          '& .MuiSvgIcon-root': { color: matched ? "primary.main" : "default" }
         }}
       />
     }

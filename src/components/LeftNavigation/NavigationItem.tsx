@@ -15,10 +15,10 @@ export const NavigationItem: FC<NavigationItemProp> = ({ to, icon, label }) => {
   return (
     <Link to={to} >
       <ListItemButton selected={matched} sx={{
-        ['& .MuiSvgIcon-root']: {
+        '& .MuiSvgIcon-root': {
           color: matched ? "primary.main" : "default"
         },
-        ['& .MuiTypography-root']: {
+        '& .MuiTypography-root': {
           fontWeight: matched ? 500 : 400,
           color: "text.primary"
         }

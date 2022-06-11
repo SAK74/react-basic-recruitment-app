@@ -33,14 +33,14 @@ export const DashboardScreen = () => {
         navigate('*', { replace: true });
         console.error(err.message);
       });
-  }, []);
+  }, []);  // eslint-disable-line
 
   if (!items || items.length === 0) {
     return <NoResults />;
   }
 
   return (
-    <Grid container spacing={5}>
+    <Grid container spacing={3}>
       {items.map(item => <Grid
         key={item.id}
         item

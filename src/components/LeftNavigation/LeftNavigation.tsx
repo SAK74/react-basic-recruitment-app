@@ -13,7 +13,7 @@ export const LeftNavigation = () => {
   return <>
     <Drawer variant="permanent" anchor="left" sx={{ [`& .MuiDrawer-paper`]: { width: 200 } }}>
       <Toolbar />
-      <List sx={{ pt: 3, ['& a']: { textDecoration: "none" } }}>
+      <List sx={{ pt: 3, '& a': { textDecoration: "none" } }}>
         <ListItem><ListItemText>Management</ListItemText></ListItem>
         {/* <Link to={navigationRoutes.dashboard.path}>Dashboard</Link> */}
         <NavigationItem to={getPath(DashboardItem['DASHBOARD'])} label="Dashboard" icon={<Home />} />
@@ -24,7 +24,7 @@ export const LeftNavigation = () => {
         <NavigationItem to={getPath(DashboardItem["SCHEDULING"])} label="Scheduling" icon={<EventNote />} />
         <NavigationItem to={getPath(DashboardItem["ORGANISATIONS"])} label="Organizations" icon={<CorporateFare />} />
         <Divider />
-        <ListItem>People</ListItem>
+        <ListItem><ListItemText>People</ListItemText></ListItem>
         <NavigationItem to={getPath(DashboardItem["USERS"])} label="Users" icon={<PeopleAlt />} />
       </List>
     </Drawer>
