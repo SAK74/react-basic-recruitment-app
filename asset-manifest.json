@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/management-product-list/static/css/main.433d316b.css",
-    "main.js": "/management-product-list/static/js/main.a5667d94.js",
-    "static/media/logo.svg": "/management-product-list/static/media/logo.37885e5e240f95154bc4fc1800153790.svg",
-    "index.html": "/management-product-list/index.html",
-    "main.433d316b.css.map": "/management-product-list/static/css/main.433d316b.css.map",
-    "main.a5667d94.js.map": "/management-product-list/static/js/main.a5667d94.js.map"
+    "main.css": "/react-basic-recruitment-app/static/css/main.433d316b.css",
+    "main.js": "/react-basic-recruitment-app/static/js/main.ce5d6d46.js",
+    "static/media/logo.svg": "/react-basic-recruitment-app/static/media/logo.37885e5e240f95154bc4fc1800153790.svg",
+    "index.html": "/react-basic-recruitment-app/index.html",
+    "main.433d316b.css.map": "/react-basic-recruitment-app/static/css/main.433d316b.css.map",
+    "main.ce5d6d46.js.map": "/react-basic-recruitment-app/static/js/main.ce5d6d46.js.map"
   },
   "entrypoints": [
     "static/css/main.433d316b.css",
-    "static/js/main.a5667d94.js"
+    "static/js/main.ce5d6d46.js"
   ]
 }
