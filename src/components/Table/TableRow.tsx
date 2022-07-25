@@ -1,37 +1,27 @@
-import React, { ReactElement, useContext } from "react";
+import React, { ReactElement } from "react";
 import { TableColumn } from "./Table";
-import { IconButton, TableCell, TableRow as MuiTableRow } from "@mui/material";
+import { TableCell, TableRow as MuiTableRow } from "@mui/material";
 import { ModelWithId } from "../../types/table.types";
-import { SportContext } from "../../screens/Sports";
-import { SportType } from "../../types/sports.types";
 
 type TableRowProps<Model> = {
   item: Model;
   columns: TableColumn<Model>[];
+  getAddProps?: (id: ModelWithId['id']) => ({});
 };
 
 export const TableRow = <Model extends ModelWithId>({
   item,
   columns,
+  getAddProps
 }: TableRowProps<Model>): JSX.Element => {
-  const context = useContext(SportContext);
+
   const getItemContent = (
     column: TableColumn<Model>
   ): ReactElement | string => {
     if (React.isValidElement(column.value)) {
-      if (!context) {
-        throw new Error("Sport Context is lacked...!")
-      }
-      const matched = item.id as (SportType['id']) === context.idSportDetails;
-      return <IconButton
-        children={column.value}
-        onClick={() => context.getSportDetails((item.id as unknown) as number)}
-        sx={{
-          '& .MuiSvgIcon-root': { color: matched ? "primary.main" : "default" }
-        }}
-      />
+      const addProps = getAddProps ? getAddProps(item.id) : undefined;
+      return React.cloneElement(column.value, addProps);
     }
-
     return item[column.value] as unknown as string;
   };
 

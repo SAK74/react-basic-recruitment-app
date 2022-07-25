@@ -29,6 +29,7 @@ type TableProps<Model extends ModelWithId> = {
   items: Model[];
   title: string;
   ButtonProps?: Pick<ButtonProps, "children" & "onClick">;
+  getAddProps?: (id: ModelWithId['id']) => ({});
 };
 
 export const Table: FC<TableProps<any>> = ({
@@ -36,6 +37,7 @@ export const Table: FC<TableProps<any>> = ({
   items,
   title,
   ButtonProps,
+  getAddProps
 }) => {
   const theme = useTheme<MsfpTheme>();
   return (
@@ -71,7 +73,10 @@ export const Table: FC<TableProps<any>> = ({
           </TableHead>
           <TableBody>
             {items.map((item) => (
-              <TableRow key={item.id} item={item} columns={columns} />
+              <TableRow
+                key={item.id}
+                {...{ item, columns, getAddProps }}
+              />
             ))}
           </TableBody>
         </MuiTable>
