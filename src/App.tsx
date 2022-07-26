@@ -1,6 +1,6 @@
 import { useState } from "react";
 import './App.css'
-import { Grid, PaletteMode, ThemeProvider, Toolbar, Box } from "@mui/material";
+import { Grid, PaletteMode, ThemeProvider, Box } from "@mui/material";
 import { TopBar } from "./components/TopBar/TopBar";
 import { LeftNavigation } from "./components/LeftNavigation/LeftNavigation";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -24,7 +24,6 @@ function App() {
       <BrowserRouter>
         <Box sx={{ backgroundColor: "background.default" }}>
           <TopBar {...{ toggleTheme }} />
-          <Toolbar />
           <Grid container sx={{ pt: 1 }}>
             <Grid item sx={{ width: 200 }}>
               <LeftNavigation />

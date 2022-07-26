@@ -18,15 +18,19 @@ interface TopBarProps {
 
 export const TopBar: FC<TopBarProps> = ({ toggleTheme }) => {
   const theme = useTheme<MsfpTheme>();
-  return <AppBar sx={{ background: theme.appBar.main, zIndex: theme.zIndex.drawer + 1 }} >
-    <Toolbar>
-      <SvgIcon component={Logo} inheritViewBox sx={{ fontSize: "3rem", width: "3em" }} />
-      <Box sx={{ flexGrow: 1 }} />
-      <FormControlLabel
-        control={<Switch onChange={(ev, checked) => toggleTheme(checked ? "dark" : "light")} />}
-        label={<Brightness5 />}
-      />
-      <Avatar />
-    </Toolbar>
-  </AppBar>
+  return <>
+    <AppBar sx={{ background: theme.appBar.main, zIndex: theme.zIndex.drawer + 1 }} >
+      <Toolbar>
+        <SvgIcon component={Logo} inheritViewBox sx={{ fontSize: "3rem", width: "3em" }} />
+        <Box sx={{ flexGrow: 1 }} />
+        <FormControlLabel
+          control={<Switch onChange={(ev, checked) => toggleTheme(checked ? "dark" : "light")} />}
+          label={<Brightness5 />}
+        />
+        <Avatar />
+      </Toolbar>
+    </AppBar>
+    <Toolbar />
+  </>
+
 }
