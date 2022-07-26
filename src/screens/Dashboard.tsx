@@ -18,10 +18,13 @@ export const DashboardScreen = () => {
       case DashboardItem.SPORTS:
         return navigationRoutes.sports.path;
       case DashboardItem.COMPETITIONS:
+        return navigationRoutes.competitions.path;
       case DashboardItem.ORGANISATIONS:
+        return navigationRoutes.organisations.path;
       case DashboardItem.USERS:
+        return navigationRoutes.users.path;
       case DashboardItem.SCHEDULING:
-        return navigationRoutes.dashboard.path;
+        return navigationRoutes.scheduling.path;
     }
   };
 
